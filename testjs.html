@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900|Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="nav">
+
+        <div class="row">
+            <div class="wrapper">
+                <h1>Ore profit calculator</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="wrapper">
+                <form>
+
+                    <div class="flex-container space-between">
+                        <div class="flex-container">
+
+                            <div class="col">
+                                <input class="form-check-input" type="checkbox" id="compressed" checked="checked">
+                                <label class="form-check-label" for="compressed">compressed only</label>
+                            </div>
+                            
+                            <div class="col">
+                                <input class="form-check-input" type="checkbox" id="riched">
+                                <label class="form-check-label" for="riched">with riched</label>
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <label class="col-form-label" for="skill">Refining Yield</label>
+                            
+                            <input type="text" class="form-control" value="79.6" id="skill" size="5">
+                            
+                            <button id="recount" class="btn btn-outline-secondary">Recount</button>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="row">
+        <div class="wrapper">
+            <table id="prices">
+                <thead>
+                    <tr>
+                        <th id="sn" class="name">Name</th>
+                        <th id="su">1 unit *</th>
+                        <th id="sm">1 m3 **</th>
+                        <th id="sur">1 unit ***</th>
+                        <th id="smr">1 m3 ****</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="wrapper">
+            <p>* Price for 1 Unit or Block of Ore</p>
+            <p>** Value of 1 m3 of Raw Ore if it will be sold as it is</p>
+            <p>*** Value of Minerals from Reprocessing 1 unit of Compressed Ore</p>
+            <p>**** Value of Minerals from Reprocessing 1 m3 of Raw Ore</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/js/all.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
