@@ -1,0 +1,581 @@
+jQuery(document).ready(function() {
+
+    let skill = 50;
+    
+    var mineralsToMine = {};
+
+    let minerals = [
+        'tri',
+        'pye',
+        'mex',
+        'iso',
+        'noc',
+        'zyd',
+        'meg',
+        'mor',
+    ];
+
+    let ores = [
+        'mer',
+        'ark',
+        'bis',
+        'cro',
+        'och',
+        'gne',
+        'spo',
+        'hed',
+        'hem',
+        'jas',
+        'ker',
+        'omb',
+        'pla',
+        'pyr',
+        'sco',
+        'vel',
+    ];
+    
+    let mineralQuantity = {
+        tri: 0,
+        pye: 0,
+        mex: 0,
+        iso: 0,
+        noc: 0,
+        zyd: 0,
+        meg: 0,
+        mor: 0,
+    };
+
+    let oreToMine = {
+        tri: 'spo',
+        pye: 'spo',
+        mex: 'gne',
+        iso: 'och',
+        noc: 'cro',
+        zyd: 'bis',
+        meg: 'ark',
+        mor: 'mer',
+    };
+
+    let oreInfo = {
+        mer: {
+            name: 'Mercoxit',
+            volume: 40,
+            quantity: 0,
+            minerals: {
+                tri: 0,
+                pye: 0,
+                mex: 0,
+                iso: 0,
+                noc: 0,
+                zyd: 0,
+                meg: 0,
+                mor: 300,
+            }
+        },
+        ark: {
+            name: 'Arkonor',
+            volume: 16,
+            quantity: 0,
+            minerals: {
+                tri: 22000,
+                pye: 0,
+                mex: 2500,
+                iso: 0,
+                noc: 0,
+                zyd: 0,
+                meg: 320,
+                mor: 0,
+            }
+        },
+        bis: {
+            name: 'Bistot',
+            volume: 16,
+            quantity: 0,
+            minerals: {
+                tri: 0,
+                pye: 12000,
+                mex: 0,
+                iso: 0,
+                noc: 0,
+                zyd: 450,
+                meg: 100,
+                mor: 0,
+            }
+        },
+        cro: {
+            name: 'Crokite',
+            volume: 16,
+            quantity: 0,
+            minerals: {
+                tri: 21000,
+                pye: 0,
+                mex: 0,
+                iso: 0,
+                noc: 760,
+                zyd: 135,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        och: {
+            name: 'Dark Ochre',
+            volume: 8,
+            quantity: 0,
+            minerals: {
+                tri: 10000,
+                pye: 0,
+                mex: 0,
+                iso: 1600,
+                noc: 120,
+                zyd: 0,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        gne: {
+            name: 'Gneiss',
+            volume: 5,
+            quantity: 0,
+            minerals: {
+                tri: 0,
+                pye: 2200,
+                mex: 2400,
+                iso: 300,
+                noc: 0,
+                zyd: 0,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        hed: {
+            name: 'Hedbergite',
+            volume: 3,
+            quantity: 0,
+            minerals: {
+                tri: 0,
+                pye: 1000,
+                mex: 0,
+                iso: 200,
+                noc: 100,
+                zyd: 19,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        hem: {
+            name: 'Hemorphite',
+            volume: 3,
+            quantity: 0,
+            minerals: {
+                tri: 2200,
+                pye: 0,
+                mex: 0,
+                iso: 100,
+                noc: 120,
+                zyd: 15,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        jas: {
+            name: 'Jaspet',
+            volume: 2,
+            quantity: 0,
+            minerals: {
+                tri: 0,
+                pye: 0,
+                mex: 350,
+                iso: 0,
+                noc: 75,
+                zyd: 8,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        ker: {
+            name: 'Kernite',
+            volume: 1.2,
+            quantity: 0,
+            minerals: {
+                tri: 134,
+                pye: 0,
+                mex: 267,
+                iso: 134,
+                noc: 0,
+                zyd: 0,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        omb: {
+            name: 'Omber',
+            volume: 0.6,
+            quantity: 0,
+            minerals: {
+                tri: 800,
+                pye: 100,
+                mex: 0,
+                iso: 85,
+                noc: 0,
+                zyd: 0,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        pla: {
+            name: 'Plagioclase',
+            volume: 0.35,
+            quantity: 0,
+            minerals: {
+                tri: 107,
+                pye: 213,
+                mex: 107,
+                iso: 0,
+                noc: 0,
+                zyd: 0,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        pyr: {
+            name: 'Pyroxeres',
+            volume: 0.3,
+            quantity: 0,
+            minerals: {
+                tri: 351,
+                pye: 25,
+                mex: 50,
+                iso: 0,
+                noc: 5,
+                zyd: 0,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        sco: {
+            name: 'Scordite',
+            volume: 0.15,
+            quantity: 0,
+            minerals: {
+                tri: 346,
+                pye: 173,
+                mex: 0,
+                iso: 0,
+                noc: 0,
+                zyd: 0,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        spo: {
+            name: 'Spodumain',
+            volume: 16,
+            quantity: 0,
+            minerals: {
+                tri: 56000,
+                pye: 12050,
+                mex: 2100,
+                iso: 450,
+                noc: 0,
+                zyd: 0,
+                meg: 0,
+                mor: 0,
+            }
+        },
+        vel: {
+            name: 'Veldspar',
+            volume: 0.1,
+            quantity: 0,
+            minerals: {
+                tri: 415,
+                pye: 0,
+                mex: 0,
+                iso: 0,
+                noc: 0,
+                zyd: 0,
+                meg: 0,
+                mor: 0,
+            }
+        },
+    };
+
+    // ========================================================================
+
+    function perm(xs) {
+
+        let result = [];
+        let l = xs.length;
+
+        for (let i = 0; i < l; i++) {
+
+            let rest = perm(xs.slice(0, i).concat(xs.slice(i + 1)));
+
+            if (!rest.length) {
+                result.push([xs[i]]);
+            } else {
+                for (let j = 0; j < rest.length; j = j + 1) {
+                    result.push([xs[i]].concat(rest[j]));
+                }
+            }
+        }
+
+        return result;
+    }
+
+    function getBlocksToMine(ore, mineral) {
+        let mineralsInBlock = oreInfo[ore].minerals[mineral];
+        return Math.ceil((mineralsToMine[mineral] - mineralQuantity[mineral]) / mineralsInBlock);
+    }
+
+    function mineOre(ore, blocksToMine) {
+        for (let mineral in oreInfo[ore].minerals) {
+            if (oreInfo[ore].minerals.hasOwnProperty(mineral) && oreInfo[ore].minerals[mineral] > 0) {
+                let mineralsInBlock = oreInfo[ore].minerals[mineral];
+                mineralQuantity[mineral] += blocksToMine * mineralsInBlock;
+            }
+        }
+    }
+
+    function countMinerals(mineralsCombination) {
+        clearMineralQuantity();
+        clearOreQuantity();
+        let l = mineralsCombination.length;
+        for (let i = 0; i < l; i++) {
+            let mineral = mineralsCombination[i];
+            if (mineralsToMine.hasOwnProperty(mineral) && mineralQuantity[mineral] < mineralsToMine[mineral]) {
+                let ore = oreToMine[mineral];
+                let blocksToMine = getBlocksToMine(ore, mineral);
+                oreInfo[ore].quantity += blocksToMine;
+                mineOre(ore, blocksToMine);
+            }
+        }
+    }
+
+    function checkVolume() {
+        let generalVolume = 0;
+    
+        for (let ore in oreInfo) {
+            if (oreInfo.hasOwnProperty(ore)) {
+                generalVolume += oreInfo[ore].quantity * oreInfo[ore].volume * 100;
+            }
+        }
+
+        return generalVolume;
+    }
+
+    function clearMineralQuantity() {
+        for (let mineral in mineralQuantity) {
+            if (mineralQuantity.hasOwnProperty(mineral)) {
+                mineralQuantity[mineral] = 0;
+            }
+        }
+    }
+
+    function clearOreQuantity() {
+        for (let ore in oreInfo) {
+            if (oreInfo.hasOwnProperty(ore)) {
+                oreInfo[ore].quantity = 0;
+            }
+        }
+    }
+
+    function findBestCombination() {
+        mineralTypes = minerals.filter(m => mineralsToMine.hasOwnProperty(m));
+        let mineralsCombinations = perm(mineralTypes);
+        let l = mineralsCombinations.length;
+        let minimunVolume = 0;
+        let bestCombinaton = [];
+        let volume = 0;
+        for (let i = 0; i < l; i++) {
+            let comb = mineralsCombinations[i];
+            countMinerals(comb);
+            volume = checkVolume();
+            if (minimunVolume === 0 || volume < minimunVolume) {
+                minimunVolume = volume;
+                bestCombinaton = comb;
+            }
+            volume = 0;
+        }
+        return bestCombinaton;
+    }
+
+    function showMinerals(ore) {
+        for (let i = 0; i < minerals.length; i++) {
+            let mineral = minerals[i];
+            let mineralsInBlock = oreInfo[ore].minerals[mineral];
+            if (mineralsInBlock > 0) {
+                let input = new Intl.NumberFormat().format(Math.ceil(mineralsInBlock * oreInfo[ore].quantity));
+                $('#minerals tbody .' + ore + ' .' + mineral + ' .mined').html(input);
+            }
+        }
+    }
+
+    function showTable(bestCombinaton) {
+        for (let i = 0; i < bestCombinaton.length; i++) {
+            let mineral = bestCombinaton[i];
+            if (mineralsToMine.hasOwnProperty(mineral) && mineralsToMine[mineral] > 0) {
+                let ore = oreToMine[mineral];
+                let oreBlocksQuantity = oreInfo[ore].quantity;
+                if (oreBlocksQuantity > 0) {
+                    let oreVolume = oreBlocksQuantity * oreInfo[ore].volume * 100;
+                    $('#minerals tbody .' + ore + ' .volume').text(new Intl.NumberFormat().format(oreVolume));
+                    $('#minerals tbody .' + ore + ' .blocks').text(new Intl.NumberFormat().format(oreBlocksQuantity));
+                    showMinerals(ore);
+                }
+            }
+        }
+    }
+
+    function showGeneralVolume() {
+        let generalVolume = 0;
+        $('#minerals tbody .volume').each(function() {
+            let n = $(this).text().replace(/,+/g, '');
+            if (!isNaN(parseInt(n))) generalVolume += parseInt(n);
+        });
+        $('#minerals tfoot .general').text(new Intl.NumberFormat().format(generalVolume));
+    }
+
+    function showMineralsQuantity() {
+        let quantity = 0;
+        for (let mineral in mineralsToMine) {
+            if (mineralsToMine.hasOwnProperty(mineral) && mineralsToMine[mineral] > 0) {
+                $('#minerals tbody .input .' + mineral).html(new Intl.NumberFormat().format(mineralsToMine[mineral]));
+                $('#minerals tbody .' + mineral + ' .mined').each(function() {
+                    let n = $(this).text().replace(/,+/g, '');
+                    if (!isNaN(parseInt(n))) quantity += parseInt(n);
+                });
+                let rest = quantity - mineralsToMine[mineral];
+                if (rest > 0) {
+                    $('#minerals tfoot .' + mineral).text(new Intl.NumberFormat().format(rest));
+                }
+                quantity = 0;
+            }
+        }
+    }
+
+
+    // ========================================================================
+
+    function parsTextArea() {
+
+        let pars = $('#textarea').val().split(/\r?\n/g);
+        for (let i = 0; i < pars.length; i++) {
+            if (pars[i] === '') {
+                delete pars[i];
+            } else {
+                pars[i] = pars[i].split(/\t/);
+                let mineral = pars[i][1].substring(0, 3).toLowerCase();
+                let quantity = parseInt(pars[i][0]);
+                if (quantity > 0) {
+                    mineralsToMine[mineral] = quantity;
+                }
+            }
+        }
+
+    }
+
+    function renderTable(reload, input, skillSet) {
+        if (Cookies.get('skill')) {
+            skill = Cookies.get('skill');
+        }
+
+        if (!reload) setSkill(skill);
+
+        if (skillSet) setSkill(skill);
+
+        prepareTable();
+        
+        fillTable();
+
+        if (!input) parsTextArea();
+        
+        let bestCombinaton = findBestCombination();
+
+        countMinerals(bestCombinaton);
+    
+        showTable(bestCombinaton);
+    
+        showGeneralVolume();
+    
+        showMineralsQuantity();
+
+    }
+
+    function setSkill(skill) {
+        for (ore in oreInfo) {
+            if (oreInfo.hasOwnProperty(ore)) {
+                for (mineral in oreInfo[ore].minerals) {
+                    if (oreInfo[ore].minerals.hasOwnProperty(mineral)) {
+                        oreInfo[ore].minerals[mineral] *= (skill / 100);
+                    }
+                }
+            }
+        }
+    }
+
+    function prepareTable() {
+        $('#skill input').change(function() {
+            skill = $(this).val();
+            Cookies.set('skill', skill);
+            $('#minerals').empty();
+            renderTable(true, true, true);
+        });
+        $('#minerals .selection').click(function() {
+            let mineral = $(this).data('mineral');
+            let ore = $(this).data('ore');
+            oreToMine[mineral] = ore;
+            $('#minerals').empty();
+            renderTable(true, true, false);
+        });
+        $('#minerals .input td').click(function() {
+            let el = $(this);
+            let val = $(this).text() ? parseInt($(this).text().replace(/,+/g, '')) : '';
+            if ($(el).data('empty') === 'empty') {
+                el.html('<input type="number" value="' + val + '" id="mineral-input" autofocus="autofocus">');
+                el.data('empty', 'full');
+                $('#mineral-input').focus();
+            }
+            $('#mineral-input').blur(function() {
+                let mineral = el.attr('class');
+                mineralsToMine[mineral] = $(this).val();
+                $('#minerals').empty();
+                renderTable(true, true, false);
+            });
+            $('#mineral-input').keypress(function(event) {
+                if (event.which == 13) {
+                    let mineral = el.attr('class');
+                    mineralsToMine[mineral] = $('#mineral-input').val();
+                    $('#minerals').empty();
+                    renderTable(true, true, false);
+                }
+            });
+        });
+    }
+
+    function fillTable() {
+        for (let i = 0; i < ores.length; i++) {
+            let ore = ores[i];
+            for (let i = 0; i < minerals.length; i++) {
+                let mineral = minerals[i];
+
+                if (oreInfo[ore].minerals[mineral] > 0) {
+                    let mineralPerMeter = oreInfo[ore].minerals[mineral] / 100 / oreInfo[ore].volume;
+                    $('#minerals .' + ore + ' .' + mineral + ' .base').html(mineralPerMeter.toFixed(3));
+                    if (oreToMine[mineral] === ore) $('#minerals .' + ore + ' .' + mineral).addClass('accent');
+                }
+
+            }
+
+        }
+    }
+        
+    $('#textarea').change(function() {
+        $('#minerals').empty();
+        renderTable(true, false, false);
+    });
+
+    renderTable(false, false);
+
+    // ========================================================================
+
+});

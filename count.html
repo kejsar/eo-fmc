@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900|Roboto+Slab:100,300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900|Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <style>
+        /* font-family: 'Montserrat', sans-serif; */
+        /* font-family: 'Roboto Slab', serif; */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #292d2e;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        textarea:focus,
+        input:focus {
+            outline: none;
+        }
+
+        #minerals {
+            background-color: #2f3a40;
+            padding: 0;
+            margin: 0;
+            border: none;
+            border-spacing: 0px;
+            color: #5a676f;
+            width: 100%;
+        }
+
+        #minerals #skill {
+            position: relative;
+        }
+
+        #minerals #skill input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            font-size: 30px;
+            color: #fff;
+            z-index: 100;
+            border: none;
+            background-color: #da4a4a;
+            text-align: center;
+            font-family: 'Roboto Slab', serif;
+            font-weight: 100;
+        }
+
+        #minerals thead {
+            background-color: #e9eaec;
+        }
+
+        #minerals thead tr th {
+            padding: 30px 10px;
+            color: #292d2e;
+            text-transform: uppercase;
+            border: none;
+        }
+
+        #minerals thead tr th.bold {
+            font-weight: 700;
+            text-align: center;
+        }
+
+        #minerals tr.input {
+            background-color: #252e33;
+        }
+
+        #minerals tr.input td.mineral-input {
+            height: 36px;
+            vertical-align: middle;
+            color: #d3d7da;
+            transition: background-color .5s, color 1s;
+        }
+
+        #minerals tr.input td.mineral-input:hover,
+        #minerals tr.input td.mineral-input.active {
+            background-color: #d3d7da;
+            color: #333333;
+            cursor: pointer;
+        }
+
+        #minerals tr.input td.mineral-input input {
+            width: 100%;
+            border: none;
+            text-align: right;
+            background-color: transparent;
+            font-size: 16px;
+            font-weight: 400;
+            font-family: 'Roboto Slab', serif;
+            letter-spacing: .5px;
+        }
+
+        #minerals th,
+        #minerals td {
+            text-align: right;
+            width: 120px;
+            border-bottom: 1px solid #323e45;
+            padding: 3px 10px;
+        }
+
+        #minerals tr:last-child th,
+        #minerals tr:last-child td {
+            border-bottom: none;
+        }
+
+        #minerals th {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        #minerals tbody th {
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #7c8e99;
+            padding: 0 40px 0 0;
+            width: 130px;
+        }
+
+        #minerals tr td.selection.active {
+            cursor: pointer;
+            transition: background-color .5s, color 1s;
+        }
+
+        #minerals tr td.selection.active:hover {
+            color: #ffffff;
+            background-color: #36434a
+        }
+
+        #minerals tr td.volume {
+            color: #ffffff;
+            letter-spacing: 1px;
+            font-weight: 300;
+            text-align: left;
+        }
+
+        #minerals tr td.blocks {
+            color: #ffffff;
+            letter-spacing: 1px;
+            font-weight: 200;
+            text-align: left;
+            padding-left: 40px;
+
+        }
+
+        #minerals tr td.accent {
+            background-color: #5a676f;
+            color: #2f3a40;
+        }
+
+        #minerals tr td .base {
+            padding: 1px 5px;
+            min-height: 18px;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        #minerals tr td .mined {
+            font-weight: 300;
+            color: #ffffff;
+            padding: 1px 5px;
+            min-height: 18px;
+            font-size: 16px;
+        }
+
+        #textarea-input {
+            position: relative;
+            border-bottom: none !important;
+        }
+
+        #textarea {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #2f3a40;
+            border: none;
+            border-top: 10px solid #252e33;
+            border-left: 10px solid #252e33;
+            padding: 15px;
+            color: #ffffff;
+        }
+
+        #minerals tfoot {
+            background-color: #252e33;
+        }
+
+        #minerals tfoot tr th {
+            color: #ffffff;
+            font-family: 'Roboto Slab', serif;
+            letter-spacing: .5px;
+            font-weight: 300;
+            padding: 15px 10px;
+            border-bottom: none;
+        }
+
+        #minerals tfoot tr th.general {
+            background-color: #2aa2a1;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 400;
+            font-family: 'Roboto Slab', serif;
+            letter-spacing: .5px;
+        }
+
+        .mer.bg-img {
+            background-image: url("img/36_64_7.png");
+        }
+        .mer .blocks.show-bg {
+            background-image: url("img/71_64_16.png");
+        }
+        .ark.bg-img {
+            background-image: url("img/23_64_5.png");
+        }
+        .ark .blocks.show-bg {
+            background-image: url("img/71_64_1.png");
+        }
+        .bis.bg-img {
+            background-image: url("img/23_64_6.png");
+        }
+        .bis .blocks.show-bg {
+            background-image: url("img/71_64_2.png");
+        }
+        .cro.bg-img {
+            background-image: url("img/23_64_7.png");
+        }
+        .cro .blocks.show-bg {
+            background-image: url("img/71_64_3.png");
+        }
+        .och.bg-img {
+            background-image: url("img/23_64_8.png");
+        }
+        .och .blocks.show-bg {
+            background-image: url("img/71_64_4.png");
+        }
+        .gne.bg-img {
+            background-image: url("img/25_64_1.png");
+        }
+        .gne .blocks.show-bg {
+            background-image: url("img/71_64_15.png");
+        }
+        .spo.bg-img {
+            background-image: url("img/23_64_14.png");
+        }
+        .spo .blocks.show-bg {
+            background-image: url("img/71_64_10.png");
+        }
+        .hed.bg-img {
+            background-image: url("img/23_64_9.png");
+        }
+        .hed .blocks.show-bg {
+            background-image: url("img/71_64_5.png");
+        }
+        .hem.bg-img {
+            background-image: url("img/23_64_10.png");
+        }
+        .hem .blocks.show-bg {
+            background-image: url("img/71_64_6.png");
+        }
+        .jas.bg-img {
+            background-image: url("img/23_64_11.png");
+        }
+        .jas .blocks.show-bg {
+            background-image: url("img/71_64_7.png");
+        }
+        .ker.bg-img {
+            background-image: url("img/23_64_12.png");
+        }
+        .ker .blocks.show-bg {
+            background-image: url("img/71_64_8.png");
+        }
+        .omb.bg-img {
+            background-image: url("img/23_64_13.png");
+        }
+        .omb .blocks.show-bg {
+            background-image: url("img/71_64_9.png");
+        }
+        .pla.bg-img {
+            background-image: url("img/24_64_2.png");
+        }
+        .pla .blocks.show-bg {
+            background-image: url("img/71_64_14.png");
+        }
+        .pyr.bg-img {
+            background-image: url("img/23_64_16.png");
+        }
+        .pyr .blocks.show-bg {
+            background-image: url("img/71_64_12.png");
+        }
+        .sco.bg-img {
+            background-image: url("img/23_64_15.png");
+        }
+        .sco .blocks.show-bg {
+            background-image: url("img/71_64_11.png");
+        }
+        .vel.bg-img {
+            background-image: url("img/24_64_1.png");
+        }
+        .vel .blocks.show-bg {
+            background-image: url("img/71_64_13.png");
+        }
+        .bg-img.ore {
+            background-position: right center;
+            background-size: 30px 30px;
+            background-repeat: no-repeat;           
+        }
+        .blocks.show-bg {
+            background-position: left center;
+            background-size: 30px 30px;
+            background-repeat: no-repeat;  
+        }
+        
+        .tri.accent {
+            background-image: url("img/6_64_14.png");
+        }
+        .pye.accent {
+            background-image: url("img/6_64_15.png");
+        }
+        .mex.accent {
+            background-image: url("img/6_64_12.png");
+        }
+        .iso.accent {
+            background-image: url("img/6_64_16.png");
+        }
+        .noc.accent {
+            background-image: url("img/11_64_9.png");
+        }
+        .zyd.accent {
+            background-image: url("img/11_64_11.png");
+        }
+        .meg.accent {
+            background-image: url("img/11_64_10.png");
+        }
+        .mor.accent {
+            background-image: url("img/35_64_2.png");
+        }
+
+        .selection.accent {
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <table id="minerals">
+            <thead>
+                <tr>
+                    <th id="skill"><input type="text" id="skill-input"></th>
+                    <th class="bold">Volume, m3</th>
+                    <th class="bold">Compr. Blocks</th>
+                    <th class="tri">Trit­anium</th>
+                    <th class="pye">Pye­rite</th>
+                    <th class="mex">Mex­allon</th>
+                    <th class="iso">Iso­gen</th>
+                    <th class="noc">Noc­xium</th>
+                    <th class="zyd">Zyd­rine</th>
+                    <th class="meg">Meg­acyte</th>
+                    <th class="mor">Mor­phite</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="input">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="tri mineral-input" data-mineral="tri" data-input-is-active="no"></td>
+                    <td class="pye mineral-input" data-mineral="pye" data-input-is-active="no"></td>
+                    <td class="mex mineral-input" data-mineral="mex" data-input-is-active="no"></td>
+                    <td class="iso mineral-input" data-mineral="iso" data-input-is-active="no"></td>
+                    <td class="noc mineral-input" data-mineral="noc" data-input-is-active="no"></td>
+                    <td class="zyd mineral-input" data-mineral="zyd" data-input-is-active="no"></td>
+                    <td class="meg mineral-input" data-mineral="meg" data-input-is-active="no"></td>
+                    <td class="mor mineral-input" data-mineral="mor" data-input-is-active="no"></td>
+                </tr>
+                <tr class="mer">
+                    <th class="mer bg-img ore">Mercoxit</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="mor selection active" data-ore="mer" data-mineral="mor">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                </tr>
+                <tr class="ark">
+                    <th class="ark bg-img ore">Arkonor</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td class="tri selection active" data-ore="ark" data-mineral="tri">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td class="mex selection active" data-ore="ark" data-mineral="mex">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="meg selection active" data-ore="ark" data-mineral="meg">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr class="bis">
+                    <th class="bis bg-img ore">Bistot</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td></td>
+                    <td class="pye selection active" data-ore="bis" data-mineral="pye">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="zyd selection active" data-ore="bis" data-mineral="zyd">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="meg selection active" data-ore="bis" data-mineral="meg">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr class="cro">
+                    <th class="cro bg-img ore">Crokite</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td class="tri selection active" data-ore="cro" data-mineral="tri">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="noc selection active" data-ore="cro" data-mineral="noc">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="zyd selection active" data-ore="cro" data-mineral="zyd">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="och">
+                    <th class="och bg-img ore">Dark Ochre</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td class="tri selection active" data-ore="och" data-mineral="tri">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td class="iso selection active" data-ore="och" data-mineral="iso">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="noc selection active" data-ore="och" data-mineral="noc">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="gne">
+                    <th class="gne bg-img ore">Gneiss</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td></td>
+                    <td class="pye selection active" data-ore="gne" data-mineral="pye">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="mex selection active" data-ore="gne" data-mineral="mex">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="iso selection active" data-ore="gne" data-mineral="iso">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="spo">
+                    <th class="spo bg-img ore">Spodumain</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td class="tri selection active" data-ore="spo" data-mineral="tri">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="pye selection active" data-ore="spo" data-mineral="pye">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="mex selection active" data-ore="spo" data-mineral="mex">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="iso selection active" data-ore="spo" data-mineral="iso">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="hed">
+                    <th class="hed bg-img ore">Hedbergite</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td></td>
+                    <td class="pye selection active" data-ore="hed" data-mineral="pye">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td class="iso selection active" data-ore="hed" data-mineral="iso">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="noc selection active" data-ore="hed" data-mineral="noc">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="zyd selection active" data-ore="hed" data-mineral="zyd">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="hem">
+                    <th class="hem bg-img ore">Hemorphite</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td class="tri selection active" data-ore="hem" data-mineral="tri">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td class="iso selection active" data-ore="hem" data-mineral="iso">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="noc selection active" data-ore="hem" data-mineral="noc">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="zyd selection active" data-ore="hem" data-mineral="zyd">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="jas">
+                    <th class="jas bg-img ore">Jaspet</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td></td>
+                    <td></td>
+                    <td class="mex selection active" data-ore="jas" data-mineral="mex">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td class="noc selection active" data-ore="jas" data-mineral="noc">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="zyd selection active" data-ore="jas" data-mineral="zyd">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="ker">
+                    <th class="ker bg-img ore">Kernite</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td class="tri selection active" data-ore="ker" data-mineral="tri">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td class="mex selection active" data-ore="ker" data-mineral="mex">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="iso selection active" data-ore="ker" data-mineral="iso">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td id="textarea-input" colspan="3" rowspan="6"><textarea id="textarea"></textarea></td>
+                </tr>
+                <tr class="omb">
+                    <th class="omb bg-img ore">Omber</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td class="tri selection active" data-ore="omb" data-mineral="tri">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="pye selection active" data-ore="omb" data-mineral="pye">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td class="iso selection active" data-ore="omb" data-mineral="iso">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr class="pla">
+                    <th class="pla bg-img ore">Plagioclase</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td class="tri selection active" data-ore="pla" data-mineral="tri">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="pye selection active" data-ore="pla" data-mineral="pye">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="mex selection active" data-ore="pla" data-mineral="mex">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="pyr">
+                    <th class="pyr bg-img ore">Pyroxeres</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td class="tri selection active" data-ore="pyr" data-mineral="tri">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="pye selection active" data-ore="pyr" data-mineral="pye">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="mex selection active" data-ore="pyr" data-mineral="mex">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td class="noc selection active" data-ore="pyr" data-mineral="noc">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                </tr>
+                <tr class="sco">
+                    <th class="sco bg-img ore">Scordite</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td class="tri selection active" data-ore="sco" data-mineral="tri">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td class="pye selection active" data-ore="sco" data-mineral="pye">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="vel">
+                    <th class="vel bg-img ore">Veldspar</th>
+                    <td class="volume"></td>
+                    <td class="blocks"></td>
+                    <td class="tri selection active" data-ore="vel" data-mineral="tri">
+                        <div class="base"></div>
+                        <div class="mined"></div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th class="general"></th>
+                    <th></th>
+                    <th class="tri"></th>
+                    <th class="pye"></th>
+                    <th class="mex"></th>
+                    <th class="iso"></th>
+                    <th class="noc"></th>
+                    <th class="zyd"></th>
+                    <th class="meg"></th>
+                    <th class="mor"></th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!-- <p><label><input type="checkbox" name="ore-site" id="ore-site" checked="checked"> Ore Site</label></p> -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/js/all.min.js"></script>
+        <script src="js.cookie.js"></script>
+        <script src="count.js?1004"></script>
+
+    </div>
+</body>
+
+</html>

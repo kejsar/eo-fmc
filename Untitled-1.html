@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+td {
+    border: 1px solid grey;
+}
+    </style>
+</head>
+<body>
+
+        <table id="minerals">
+                <thead>
+                    <tr>
+                        <th id="skill"><input type="text" id="skill-input" value="79.6"></th>
+                        <th>Volume, m3</th>
+                        <th>Compr. Blocks</th>
+                        <th class="tri">Trit­anium</th>
+                        <th class="pye">Pye­rite</th>
+                        <th class="mex">Mex­allon</th>
+                        <th class="iso">Iso­gen</th>
+                        <th class="noc">Noc­xium</th>
+                        <th class="zyd">Zyd­rine</th>
+                        <th class="meg">Meg­acyte</th>
+                        <th class="mor">Mor­phite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="input">
+                        <td class="none"></td>
+                        <td class="none"></td>
+                        <td class="none"></td>
+                        <td class="tri" data-empty="empty"></td>
+                        <td class="pye" data-empty="empty"></td>
+                        <td class="mex" data-empty="empty"></td>
+                        <td class="iso" data-empty="empty"></td>
+                        <td class="noc" data-empty="empty"></td>
+                        <td class="zyd" data-empty="empty"></td>
+                        <td class="meg" data-empty="empty"></td>
+                        <td class="mor" data-empty="empty"></td>
+                    </tr>
+                    <tr class="mer">
+                        <th>Mercoxit</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="mer" data-mineral="tri">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="mer" data-mineral="pye">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="mer" data-mineral="mex">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="mer" data-mineral="iso">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="mer" data-mineral="noc">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="zyd selection" data-ore="mer" data-mineral="zyd">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="meg selection" data-ore="mer" data-mineral="meg">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mor selection accent" data-ore="mer" data-mineral="mor">
+                            <div class="base">0.060</div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="ark">
+                        <th>Arkonor</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="ark" data-mineral="tri">
+                            <div class="base">10.945</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="ark" data-mineral="pye">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="ark" data-mineral="mex">
+                            <div class="base">1.244</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="ark" data-mineral="iso">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="ark" data-mineral="noc">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="zyd selection" data-ore="ark" data-mineral="zyd">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="meg selection accent" data-ore="ark" data-mineral="meg">
+                            <div class="base">0.159</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mor selection" data-ore="ark" data-mineral="mor">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="bis">
+                        <th>Bistot</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="bis" data-mineral="tri">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="bis" data-mineral="pye">
+                            <div class="base">5.970</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="bis" data-mineral="mex">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="bis" data-mineral="iso">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="bis" data-mineral="noc">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="zyd selection accent" data-ore="bis" data-mineral="zyd">
+                            <div class="base">0.224</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="meg selection" data-ore="bis" data-mineral="meg">
+                            <div class="base">0.050</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mor selection" data-ore="bis" data-mineral="mor">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="cro">
+                        <th>Crokite</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="cro" data-mineral="tri">
+                            <div class="base">10.447</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="cro" data-mineral="pye">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="cro" data-mineral="mex">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="cro" data-mineral="iso">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection accent" data-ore="cro" data-mineral="noc">
+                            <div class="base">0.378</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="zyd selection" data-ore="cro" data-mineral="zyd">
+                            <div class="base">0.067</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="meg selection" data-ore="cro" data-mineral="meg">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mor selection" data-ore="cro" data-mineral="mor">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="och">
+                        <th>Dark Ochre</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="och" data-mineral="tri">
+                            <div class="base">9.950</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="och" data-mineral="pye">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="och" data-mineral="mex">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection accent" data-ore="och" data-mineral="iso">
+                            <div class="base">1.592</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="och" data-mineral="noc">
+                            <div class="base">0.119</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="zyd selection" data-ore="och" data-mineral="zyd">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="meg selection" data-ore="och" data-mineral="meg">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mor selection" data-ore="och" data-mineral="mor">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="gne">
+                        <th>Gneiss</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="gne" data-mineral="tri">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="gne" data-mineral="pye">
+                            <div class="base">3.502</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection accent" data-ore="gne" data-mineral="mex">
+                            <div class="base">3.821</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="gne" data-mineral="iso">
+                            <div class="base">0.478</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="gne" data-mineral="noc">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="zyd selection" data-ore="gne" data-mineral="zyd">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="meg selection" data-ore="gne" data-mineral="meg">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mor selection" data-ore="gne" data-mineral="mor">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="spo">
+                        <th>Spodumain</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection accent" data-ore="spo" data-mineral="tri">
+                            <div class="base">27.860</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection accent" data-ore="spo" data-mineral="pye">
+                            <div class="base">5.995</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="spo" data-mineral="mex">
+                            <div class="base">1.045</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="spo" data-mineral="iso">
+                            <div class="base">0.224</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="spo" data-mineral="noc">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="zyd selection" data-ore="spo" data-mineral="zyd">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="meg selection" data-ore="spo" data-mineral="meg">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mor selection" data-ore="spo" data-mineral="mor">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="hed">
+                        <th>Hedbergite</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="hed" data-mineral="tri">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="hed" data-mineral="pye">
+                            <div class="base">2.653</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="hed" data-mineral="mex">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="hed" data-mineral="iso">
+                            <div class="base">0.531</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="hed" data-mineral="noc">
+                            <div class="base">0.265</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="zyd selection" data-ore="hed" data-mineral="zyd">
+                            <div class="base">0.050</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="meg selection" data-ore="hed" data-mineral="meg">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mor selection" data-ore="hed" data-mineral="mor">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="hem">
+                        <th>Hemorphite</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="hem" data-mineral="tri">
+                            <div class="base">5.837</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="hem" data-mineral="pye">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="hem" data-mineral="mex">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="hem" data-mineral="iso">
+                            <div class="base">0.265</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="hem" data-mineral="noc">
+                            <div class="base">0.318</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="zyd selection" data-ore="hem" data-mineral="zyd">
+                            <div class="base">0.040</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="meg selection" data-ore="hem" data-mineral="meg">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mor selection" data-ore="hem" data-mineral="mor">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="jas">
+                        <th>Jaspet</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="jas" data-mineral="tri">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="jas" data-mineral="pye">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="jas" data-mineral="mex">
+                            <div class="base">1.393</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="jas" data-mineral="iso">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="jas" data-mineral="noc">
+                            <div class="base">0.298</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="zyd selection" data-ore="jas" data-mineral="zyd">
+                            <div class="base">0.032</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="meg selection" data-ore="jas" data-mineral="meg">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mor selection" data-ore="jas" data-mineral="mor">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="ker">
+                        <th>Kernite</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="ker" data-mineral="tri">
+                            <div class="base">0.889</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="ker" data-mineral="pye">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="ker" data-mineral="mex">
+                            <div class="base">1.771</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="ker" data-mineral="iso">
+                            <div class="base">0.889</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="ker" data-mineral="noc">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="zyd selection" data-ore="ker" data-mineral="zyd" colspan="3" rowspan="6">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At illo, perferendis dicta officiis nulla ullam odio autem, tempora consequatur hic deserunt qui repellendus saepe consequuntur quisquam inventore asperiores similique aliquam.</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At illo, perferendis dicta officiis nulla ullam odio autem, tempora consequatur hic deserunt qui repellendus saepe consequuntur quisquam inventore asperiores similique aliquam.</p>
+                            </td>
+                    </tr>
+                    <tr class="omb">
+                        <th>Omber</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="omb" data-mineral="tri">
+                            <div class="base">10.613</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="omb" data-mineral="pye">
+                            <div class="base">1.327</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="omb" data-mineral="mex">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="omb" data-mineral="iso">
+                            <div class="base">1.128</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="omb" data-mineral="noc">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="pla">
+                        <th>Plagioclase</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="pla" data-mineral="tri">
+                            <div class="base">2.433</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="pla" data-mineral="pye">
+                            <div class="base">4.844</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="pla" data-mineral="mex">
+                            <div class="base">2.433</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="pla" data-mineral="iso">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="pla" data-mineral="noc">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="pyr">
+                        <th>Pyroxeres</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="pyr" data-mineral="tri">
+                            <div class="base">9.313</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="pyr" data-mineral="pye">
+                            <div class="base">0.663</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="pyr" data-mineral="mex">
+                            <div class="base">1.327</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="pyr" data-mineral="iso">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="pyr" data-mineral="noc">
+                            <div class="base">0.133</div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="sco">
+                        <th>Scordite</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="sco" data-mineral="tri">
+                            <div class="base">18.361</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="sco" data-mineral="pye">
+                            <div class="base">9.181</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="sco" data-mineral="mex">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="sco" data-mineral="iso">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="sco" data-mineral="noc">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                    <tr class="vel">
+                        <th>Veldspar</th>
+                        <td class="volume"></td>
+                        <td class="blocks"></td>
+                        <td class="tri selection" data-ore="vel" data-mineral="tri">
+                            <div class="base">33.034</div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="pye selection" data-ore="vel" data-mineral="pye">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="mex selection" data-ore="vel" data-mineral="mex">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="iso selection" data-ore="vel" data-mineral="iso">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                        <td class="noc selection" data-ore="vel" data-mineral="noc">
+                            <div class="base"></div>
+                            <div class="mined"></div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th class="general">0</th>
+                        <th></th>
+                        <th class="tri"></th>
+                        <th class="pye"></th>
+                        <th class="mex"></th>
+                        <th class="iso"></th>
+                        <th class="noc"></th>
+                        <th class="zyd"></th>
+                        <th class="meg"></th>
+                        <th class="mor"></th>
+                    </tr>
+                </tfoot>
+            </table>
+</body>
+</html>
