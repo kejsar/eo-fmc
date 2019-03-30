@@ -289,7 +289,7 @@ jQuery(document).ready(function() {
     // ========================================================================
 
     function checkCookie(name) {
-        return Cookies.get(name) !== null;
+        return Cookies.get(name) != null;
     }
 
     function getSkill() {
@@ -499,7 +499,7 @@ jQuery(document).ready(function() {
     function showGeneralVolume() {
         let generalVolume = 0;
         $('#minerals tbody .volume').each(function() {
-            let n = $(this).text().replace(/,+/g, '');
+            let n = $(this).text().replace(/,|\s/g, '');
             if (!isNaN(parseInt(n))) generalVolume += parseInt(n);
         });
         $('#minerals tfoot .general').text(new Intl.NumberFormat().format(generalVolume));
@@ -511,7 +511,7 @@ jQuery(document).ready(function() {
             if (mineralsToMine.hasOwnProperty(mineral) && mineralsToMine[mineral] > 0) {
                 $('#minerals tbody .input .' + mineral).html(new Intl.NumberFormat().format(mineralsToMine[mineral]));
                 $('#minerals tbody .' + mineral + ' .mined').each(function() {
-                    let n = $(this).text().replace(/,+/g, '');
+                    let n = $(this).text().replace(/,|\s/g, '');
                     if (!isNaN(parseInt(n))) quantity += parseInt(n);
                 });
                 let rest = quantity - mineralsToMine[mineral];
@@ -558,7 +558,7 @@ jQuery(document).ready(function() {
     // ========================================================================
 
     $('#skill-input').change(function() {
-        let skill = $(this).val().replace(/%+/g, '').replace(/ +/g, '');
+        let skill = $(this).val().replace(/%/g, '').replace(/\s+/g, '');
         setCookie('skill', skill);
         reload();
     });
@@ -573,7 +573,7 @@ jQuery(document).ready(function() {
 
     $('#minerals .mineral-input').click(function() {
         let el = $(this);
-        let val = $(this).text() ? parseInt($(this).text().replace(/,+/g, '')) : '';
+        let val = $(this).text() ? parseInt($(this).text().replace(/,|\s/g, '')) : '';
         if ($(el).data('inputIsActive') === 'no') {
             el.data('inputIsActive', 'yes');
             el.addClass('active');

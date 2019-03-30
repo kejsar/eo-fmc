@@ -7,8 +7,58 @@
 }
 
 body {
-    background-color: #292d2e;
     font-family: 'Roboto Slab', serif;
+    background-color: #292929;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.wrapper .logo {
+    background: url(img/SII.png) center center / contain no-repeat;
+    width: 100px;
+    height: 100px;
+}
+
+.wrapper h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 46px;
+    font-weight: 900;
+    color: #393939;
+}
+
+.wrapper h1 span {
+    color: #191919;
+}
+
+.wrapper p.sii {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 46px;
+    font-weight: 900;
+    color: #191919;
+    display: flex;
+    align-items: center;
+}
+
+.wrapper p.sii abbr {
+    text-decoration: none;
+}
+
+.wrapper p.sii span {
+    font-size: 10px;
+    line-height: 12px;
+    color: #393939;
+    margin-left: 3px;
+}
+
+.wrapper .left,
+.wrapper .right {
+    font-size: 16px;
+    font-weight: 400;
+    color: #1b1b1b;
 }
 
 textarea:focus,
